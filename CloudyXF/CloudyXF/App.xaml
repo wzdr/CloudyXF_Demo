@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CloudyXF.App">
+	<Application.Resources>
+
+        <ResourceDictionary>
+            <Style x:Key="labelStyle" TargetType="Label">
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="BackgroundColor" Value="#E2E2E2" />
+                <Setter Property="FontSize" Value="Medium" />
+            </Style>
+            <Style x:Key="weekDayLabelStyle" TargetType="Label">
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="BackgroundColor" Value="#E2E2E2" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor">
+                    <OnPlatform x:TypeArguments="Color"
+                        iOS="Red"
+                        Android="CornflowerBlue"
+                        WinPhone="Blue" />
+                </Setter>
+                <Setter Property="FontAttributes">
+                    <OnPlatform x:TypeArguments="FontAttributes"
+                        iOS="Bold"
+                        Android="Bold"
+                        WinPhone="None" />
+                </Setter>
+            </Style>
+            <Style x:Key="labelDetailStyle" TargetType="Label">
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="BackgroundColor" Value="#E2E2E2" />
+                <Setter Property="FontSize" Value="Small" />
+            </Style>
+            <Style x:Key="summaryStyle" TargetType="Label">
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="BackgroundColor" Value="#E2E2E2" />
+                <Setter Property="FontSize">
+                    <OnPlatform x:TypeArguments="Font"
+                        iOS="Small"
+                        Android="Small"
+                        WinPhone="Micro" />
+                </Setter>
+            </Style>
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <!--<Setter Property="HorizontalOptions" Value="Center" />-->
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="BackgroundColor" Value="#CACACA" />
+                <Setter Property="BorderWidth" Value="2" />
+                <Setter Property="BorderColor" Value="#959595" />
+                <Setter Property="BorderRadius" Value="2" />
+                <Setter Property="TextColor" Value="#ED1C24" />
+
+                <Setter Property="FontSize">
+                    <OnPlatform x:TypeArguments="x:Double"
+                      iOS="16"
+                      WinPhone="20"
+                      Android="16" />
+                </Setter>
+                <!--<Setter Property="FontSize" Value="16" />-->
+            </Style>
+            <Style x:Key="weekDayCellLabelStyle" TargetType="Label">
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="BackgroundColor" Value="#E2E2E2" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="TextColor">
+                    <OnPlatform x:TypeArguments="Color"
+                        iOS="Red"
+                        Android="CornflowerBlue"
+                        WinPhone="Blue" />
+                </Setter>
+            </Style>
+            <Style x:Key="weekDetailCellLabelStyle" TargetType="Label">
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="BackgroundColor" Value="#E2E2E2" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="TextColor" Value="Gray" />
+            </Style>
+        </ResourceDictionary>
+
+    </Application.Resources>
+</Application>

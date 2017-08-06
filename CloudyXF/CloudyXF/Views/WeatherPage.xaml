@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:CloudyXF;assembly=CloudyXF"
+             xmlns:viewModels="clr-namespace:CloudyXF.ViewModels;assembly=CloudyXF.ViewModels"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="CloudyXF.Views.WeatherPage"
+             Title="Cloudy">
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness"
+                iOS="10, 20, 10, 10"
+                Android="5, 5"
+                WinPhone="10, 0" />
+    </ContentPage.Padding>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid Padding="1" RowSpacing="1" ColumnSpacing="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+
+                <Label Text="{Binding Date}"
+                    Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
+                    BackgroundColor="Transparent"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource weekDayLabelStyle}">
+                </Label>
+
+                <Label x:Name="TimeLabel" Text="{Binding TimeString}"
+                    Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+                    BackgroundColor="Transparent"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource labelDetailStyle}" />
+
+                <Label Text="Wind:"
+                    Grid.Row="2" Grid.Column="3"
+                    BackgroundColor="Transparent"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource labelDetailStyle}" />
+
+                <Label Text="{Binding WindSpeed}"
+                    Grid.Row="3" Grid.Column="3"
+                    BackgroundColor="Transparent"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource labelDetailStyle}" />
+
+                <Label Text="{Binding Temperature}"
+                    Grid.Row="3" Grid.Column="0"
+                    BackgroundColor="Transparent"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource labelDetailStyle}" />
+
+                <Label Text="{Binding Humidity}"
+                    Grid.Row="4" Grid.Column="0"
+                    BackgroundColor="Transparent"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource labelDetailStyle}" />
+
+                <Label Text="{Binding Summary}"
+                    Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"
+                    BackgroundColor="Transparent"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource summaryStyle}" />
+
+                <Image Source="{Binding DayImageString}"
+                    Grid.Row="2" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="2"
+                    HeightRequest="64" 
+                    WidthRequest="64" 
+                    Aspect="AspectFit">
+                </Image>
+                
+                <Button x:Name="GetWeatherButton"
+                    Text="Get"
+                    Grid.Row="5" Grid.Column="3"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="Center"
+                    Style="{StaticResource buttonStyle}" >
+                </Button>
+            </Grid>
+
+            <BoxView HeightRequest="2" >
+                <BoxView.Color>
+                    <OnPlatform x:TypeArguments="Color"
+                        iOS="Gray"
+                        Android="CornflowerBlue"
+                        WinPhone="Blue" />
+                </BoxView.Color>
+            </BoxView>
+
+            <ListView ItemsSource="{Binding WeekWeatherData}"
+                  HasUnevenRows="True"
+                  CachingStrategy="RecycleElement"
+                  IsPullToRefreshEnabled="True"
+                  x:Name="ListViewWeather"
+                  ItemSelected="OnItemSelected">
+ 
+                <ListView.SeparatorColor>
+                    <OnPlatform x:TypeArguments="Color"
+                        iOS="Gray"
+                        Android="CornflowerBlue"
+                        WinPhone="Blue" />
+                </ListView.SeparatorColor>
+                
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                             <Grid Padding="1" RowSpacing="1" ColumnSpacing="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="3*" />
+                                    <RowDefinition Height="3*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="{Binding Day}"
+                                    Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                                    BackgroundColor="Transparent"
+                                    HorizontalTextAlignment="Start"
+                                    Style="{StaticResource weekDayCellLabelStyle}">
+                                </Label>
+                                <Label Text="{Binding WeekDate}"
+                                    Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                                    BackgroundColor="Transparent"
+                                    HorizontalTextAlignment="Start"
+                                    Style="{StaticResource weekDetailCellLabelStyle}">
+                                </Label>
+                                <Label Text="{Binding TemperatureRange}"
+                                    Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                                    BackgroundColor="Transparent"
+                                    HorizontalTextAlignment="End"
+                                    Style="{StaticResource weekDetailCellLabelStyle}">
+                                </Label>
+                                <Label Text="{Binding WeekHumidityString}"
+                                    Grid.Row="2" Grid.Column="2"
+                                    BackgroundColor="Transparent"
+                                    HorizontalTextAlignment="Center"
+                                    Style="{StaticResource weekDetailCellLabelStyle}">
+                                </Label>
+                                <Label Text="{Binding WeekWindSpeed}"
+                                    Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2"
+                                    BackgroundColor="Transparent"
+                                    HorizontalTextAlignment="Center"
+                                    Style="{StaticResource weekDetailCellLabelStyle}">
+                                </Label>
+                                <ffimageloading:CachedImage Source="{Binding DisplayIcon}"
+                                    Grid.Row="0" Grid.RowSpan="2" Grid.Column="3"
+                                    HeightRequest="24" 
+                                    WidthRequest="24" 
+                                    Aspect="Fill">
+                                </ffimageloading:CachedImage>
+                            </Grid>
+                         </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+    

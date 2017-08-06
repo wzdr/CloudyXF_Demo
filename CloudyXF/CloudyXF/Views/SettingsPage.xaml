@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CloudyXF.Views.SettingsPage"
+             Title="Settings">
+    <ContentPage.Content>
+
+        <StackLayout VerticalOptions="Center">
+
+            <Grid Padding="1" RowSpacing="1" ColumnSpacing="10" MinimumHeightRequest="100">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Text="24 Hours" FontSize="Medium" TextColor="CornflowerBlue"
+                                        BackgroundColor="Transparent"
+                                        HorizontalTextAlignment="End"
+                                        Style="{StaticResource labelStyle}" />
+                <Label Text="12 Hours" FontSize="Medium" TextColor="CornflowerBlue"
+                                        Grid.Row="1"
+                                        BackgroundColor="Transparent"
+                                        HorizontalTextAlignment="End"
+                                        Style="{StaticResource labelStyle}" />
+                <Button x:Name="TwentyFourHoursButton" Grid.Column="1"
+                    BackgroundColor="Transparent"
+                    Clicked="OnTwentyFourHoursClicked"/>
+                <Button x:Name="TwelveHoursButton" Grid.Column="1" Grid.Row="1"
+                    BackgroundColor="Transparent"
+                    Clicked="OnTwentyFourHoursClicked"/>
+            </Grid>
+            <BoxView Color="Transparent" HeightRequest="3"/>
+
+            <Grid Padding="1" RowSpacing="1" ColumnSpacing="10" MinimumHeightRequest="100">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Celcius" FontSize="Medium" TextColor="CornflowerBlue"
+                                        BackgroundColor="Transparent"
+                                        HorizontalTextAlignment="End"
+                                        Style="{StaticResource labelStyle}" />
+                <Label Text="Fahrenheit" FontSize="Medium" TextColor="CornflowerBlue"
+                                        Grid.Row="1"
+                                        BackgroundColor="Transparent"
+                                        HorizontalTextAlignment="End"
+                                        Style="{StaticResource labelStyle}" />
+                <Button x:Name="CelciusButton" Grid.Column="1"
+                    BackgroundColor="Transparent"
+                    Clicked="OnCelciusClicked"/>
+                <Button x:Name="FahrenheitButton" Grid.Column="1" Grid.Row="1"
+                    BackgroundColor="Transparent"
+                    Clicked="OnCelciusClicked"/>
+            </Grid>
+            <BoxView Color="Transparent" HeightRequest="3"/>
+
+            <Grid Padding="1" RowSpacing="1" ColumnSpacing="10" MinimumHeightRequest="100">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Metric" FontSize="Medium" TextColor="CornflowerBlue"
+                                        BackgroundColor="Transparent"
+                                        HorizontalTextAlignment="End"
+                                        Style="{StaticResource labelStyle}" />
+                <Label Text="Imperial" FontSize="Medium" TextColor="CornflowerBlue"
+                                        Grid.Row="1"
+                                        BackgroundColor="Transparent"
+                                        HorizontalTextAlignment="End"
+                                        Style="{StaticResource labelStyle}" />
+                <Button x:Name="MetricButton" Grid.Column="1"
+                    BackgroundColor="Transparent"
+                    Clicked="OnMetricClicked"/>
+                <Button x:Name="ImperialButton" Grid.Column="1" Grid.Row="1"
+                    BackgroundColor="Transparent"
+                    Clicked="OnMetricClicked"/>
+            </Grid>
+            <BoxView Color="Transparent" HeightRequest="3"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+    
+             
